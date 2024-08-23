@@ -1,5 +1,6 @@
 package com.example.bigdata.tools
 
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object GetContext {
@@ -15,4 +16,17 @@ object GetContext {
 
     sc
   }
+
+  def getStreamingContext(appName: String): StreamingContext = {
+    val master = sys.props.getOrElse("spark.master", "local[*]")
+
+    val conf: SparkConf = new SparkConf()
+      .setAppName(appName)
+      .setMaster(master)
+
+    val ssc = new StreamingContext(conf, Seconds(10))
+
+    ssc
+  }
+
 }

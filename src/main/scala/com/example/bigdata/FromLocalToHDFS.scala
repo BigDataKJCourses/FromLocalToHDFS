@@ -1,7 +1,5 @@
 package com.example.bigdata
 
-import org.apache.spark.SparkConf
-import org.apache.spark.SparkContext
 import com.alvinalexander.accesslogparser._
 import com.example.bigdata.tools.GetContext.getSparkContext
 
